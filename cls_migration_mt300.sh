@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Paramètres
-input=`pwd`					# Path des fichiers input (pwd = répertoire courant)
+input=`pwd`					              # Path des fichiers input (pwd = répertoire courant)
 output="/home/gobertj1a/tmp"			# Path pour les fichiers/répertoires output
-output_prefix="all_"				# Préfixe des fichiers de résultat (concaténés)
-pattern=SW*txt					# Pattern pour sélectionner tous les fichiers input
+output_prefix="all_"				      # Préfixe des fichiers de résultat (concaténés)
+pattern=SW*txt					          # Pattern pour sélectionner tous les fichiers input
 
 # Variables fixes
 file_count=$(cd $input | ls -lrth $pattern | wc -l)	# Nombre de fichiers à traiter (correspondant au pattern)
-counter=0					 	# Nombre de fichiers traités
-current_time=$(date "+%Y%m%d_%H%M%S") 			# Timestamp
+counter=0					 	                                # Nombre de fichiers traités
+current_time=$(date "+%Y%m%d_%H%M%S") 			        # Timestamp
 
 # Codes couleur
 nc='\033[0m'
@@ -47,9 +47,9 @@ echo -e "${yellow}$file_count fichiers à traiter dans $output${nc}"
 # Pour chaque fichier matché par le pattern
 for f in $pattern
 do
-  counter=$((counter+1)) 		# Compteur
+  counter=$((counter+1)) 		    # Compteur
   file_name=$(basename "$f")		# Récupération du nom du fichier sans le path
-  extension="${file_name##*.}"		# Récupération de l'extension du fichier
+  extension="${file_name##*.}"	# Récupération de l'extension du fichier
   file_name="${file_name%.*}"	 	# Récupération du nom du fichier sans l'extension
 
   echo -e "  ${cyan}$counter) Traitement de $file_name..${nc}"
